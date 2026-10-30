@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* 1600x900 cover: a voice track with the ums cut out in pauses, a key word landing on its word */
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1600px; height: 900px; }
+  body {
+    background: #f4f1ea;
+    font-family: "Segoe UI", "Microsoft YaHei UI", sans-serif;
+    color: #1d1b18;
+    position: relative; overflow: hidden;
+  }
+  .frame {
+    position: absolute; left: 104px; top: 92px; width: 1392px; height: 430px;
+    background: #fff; border: 3px solid #1d1b18; border-radius: 26px; overflow: hidden;
+  }
+  .head { position: absolute; left: 560px; top: 92px; width: 272px; height: 272px; border-radius: 50%; background: #d9d3c6; }
+  .body { position: absolute; left: 456px; top: 330px; width: 480px; height: 260px; border-radius: 240px 240px 0 0; background: #d9d3c6; }
+  .word {
+    position: absolute; left: 930px; top: 118px; padding: 18px 34px; border-radius: 18px;
+    background: #e0572d; color: #fff; font-size: 64px; font-weight: 800; letter-spacing: 0.02em;
+    transform: rotate(-3deg);
+  }
+  .card {
+    position: absolute; left: 56px; bottom: 54px; background: #1d1b18; color: #f4f1ea;
+    border-radius: 14px; padding: 16px 26px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .card .bar { height: 14px; border-radius: 7px; background: #f4f1ea; width: 220px; }
+  .card .bar.s { width: 150px; background: #8a8273; }
+  .track { position: absolute; left: 104px; top: 580px; width: 1392px; height: 150px; display: flex; align-items: center; gap: 0; }
+  .keep { height: 150px; border: 3px solid #1d1b18; border-radius: 18px; background: #fff; display: flex; align-items: center; justify-content: space-evenly; padding: 0 12px; }
+  .keep i { display: block; width: 6px; border-radius: 3px; background: #1d1b18; }
+  .gone {
+    height: 116px; margin: 0 10px; border: 3px dashed #b9b1a1; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center; font-size: 34px; color: #8a8273;
+    background: #f4f1ea repeating-linear-gradient(-45deg, transparent 0 12px, #ebe6db 12px 20px);
+    position: relative; z-index: 2;
+  }
+  .cut { position: absolute; top: 556px; width: 4px; height: 198px; background: #e0572d; border-radius: 2px; }
+  .cut::before { content: ""; position: absolute; top: -12px; left: -10px; width: 24px; height: 24px; border-radius: 50%; background: #e0572d; }
+  .ruler { position: absolute; left: 108px; right: 108px; top: 770px; display: flex; justify-content: space-between; font-size: 22px; color: #6d675c; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="word">重点词</div>
+    <div class="card"><div class="bar"></div><div class="bar s"></div></div>
+  </div>
+  <div class="track" id="track"></div>
+  <div class="ruler"><span>0:00</span><span>0:10</span><span>0:20</span><span>0:30</span><span>0:40</span><span>0:50</span></div>
+  <script>
+    // Build the voice track: kept speech with waveform bars, ums cut out between
+    const parts = [['keep', 290], ['gone', '呃'], ['keep', 340], ['gone', '嗯…'], ['keep', 230], ['gone', '那个'], ['keep', 112]];
+    const track = document.getElementById('track');
+    let seed = 7;
+    const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    for (const [kind, v] of parts) {
+      const el = document.createElement('div');
+      el.className = kind;
+      if (kind === 'keep') {
+        el.style.width = v + 'px';
+        for (let i = 0; i < Math.floor(v / 15); i++) {
+          const bar = document.createElement('i');
+          bar.style.height = (18 + rnd() * 92) + 'px';
+          el.appendChild(bar);
+        }
+      } else {
+        el.style.width = '120px';
+        el.textContent = v;
+      }
+      track.appendChild(el);
+    }
+    // Mark each cut at the middle of its gap
+    for (const g of document.querySelectorAll('.gone')) {
+      const r = g.getBoundingClientRect();
+      const cut = document.createElement('div');
+      cut.className = 'cut';
+      cut.style.left = (r.left + r.width / 2 - 2) + 'px';
+      document.body.appendChild(cut);
+    }
+  </script>
+</body>
+</html>
