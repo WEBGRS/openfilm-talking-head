@@ -27,8 +27,10 @@ not tightening: breath and emphasis stay.
 - **Heard again, it is their words.** The joined sound, transcribed once more, reads as what they said in their order,
   less only what was meant to go. A cut that left the repeat in or took a word with it is moved or put back.
 - **What is on screen is what they said.** A key word lands within two frames of being said and leaves when they move
-  on; the name card carries the name and title they gave, spelled their way; subtitles come from the transcript.
-- **The cover says what the film is about** in their words, readable at the size a feed shows it.
+  on; the name card carries the name and title they gave, spelled their way (a name only a transcript heard is a guess:
+  leave it off until they spell it); subtitles come from the transcript.
+- **The cover says what the film is about** in their words, a line they said, readable at the size a feed shows it. It
+  is the picture shown before the film plays, not a shot in it.
 
 ## What you have
 
