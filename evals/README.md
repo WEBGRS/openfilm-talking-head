@@ -3,7 +3,7 @@
 How this skill was tried. Nothing here goes to the agent: only `skills/` is installed.
 
 Skill version 0.2.2, with earlier rows from 0.2.1. Agent: Claude Code 2.1.310, headless, model id `claude-sonnet-5-5` as
-its init event reports it. OpenFilm 0.2.7, Windows 11, 2026-11-06. Each arm ran once in an isolated project with the same
+its init event reports it. OpenFilm 0.2.7 installed, Windows 11, 2026-11-06. The agent's OpenFilm instructions say `npx -y openfilm@latest`, which was 0.3.0 once it came out that day. On request 1, the arm without the skill ran `open`, `look` and `render` through it. On request 2, 0.2.2 read the manual and opened its project through it. The other arms used 0.2.7. Each arm ran once in an isolated project with the same
 files; the only difference was the skill folder. Every `with` arm loaded the skill.
 
 The result is mixed. With the skill, no cut point fell in loud speech, at most one word per film was damaged, and every
@@ -110,3 +110,10 @@ Seen, with: this speaker is fluent and his stumbles have no pause beside them, s
 mostly tightened pauses. 0.2.2's one stumble cut also took 看这个, the words for watching this. 0.2.1 treated the sound into a
 new file (noise taken out, -17.1 LUFS); 0.2.2 left it at -20.7 LUFS. 0.2.1 kept a card page with placeholders out of the film.
 0.2.2 placed its key words from dips in the sound, and transcript times run a few tenths off, so the key word row is weak here.
+
+## On OpenFilm 0.3.0
+
+After the trials, a copy of a finished trial project was run on the released OpenFilm 0.3.0 (Windows 11, 2026-11-06), without an agent and not in Studio.
+
+- `look` passed and a 4 s `render` came out.
+- `render --subtitles` first said the film had no subtitles, because this trial left the transcript at the project's root. With it beside the recording, where `get asr` writes it, the render showed them.
