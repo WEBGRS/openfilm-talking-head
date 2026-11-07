@@ -1,10 +1,17 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.2",
   "repository": "https://github.com/WEBGRS/openfilm-talking-head/tree/main/skills/talking-head",
   "kind": "workflow",
   "order": 22,
   "icon": "scissors",
   "cover": "cover.jpg",
+  "needs": {
+    "en": "FFmpeg on your PATH, and a transcription service connected in OpenFilm",
+    "zh-CN": "系统 PATH 里的 FFmpeg，以及在 OpenFilm 里连好的语音转写服务",
+    "ja": "PATH の通った FFmpeg と、OpenFilm に接続した文字起こしサービス",
+    "ko": "PATH에 있는 FFmpeg, 그리고 OpenFilm에 연결한 음성 받아쓰기 서비스",
+    "es": "FFmpeg en tu PATH y un servicio de transcripción conectado en OpenFilm"
+  },
   "title": {
     "en": "Talking head",
     "zh-CN": "口播精剪",

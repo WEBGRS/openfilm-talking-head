@@ -27,8 +27,8 @@ not tightening: breath and emphasis stay.
 - **Heard again, it is their words.** The joined sound, transcribed once more, reads as what they said in their order,
   less only what was meant to go. A cut that left the repeat in or took a word with it is moved or put back.
 - **What is on screen is what they said.** A key word lands within two frames of being said and leaves when they move
-  on; the name card carries the name and title they gave, spelled their way (a name only a transcript heard is a guess:
-  leave it off until they spell it); subtitles come from the transcript.
+  on; the name card carries the name and title they gave, spelled their way, and it goes in with what is sure (a name
+  only a transcript heard is a guess: that part stays off until they spell it); subtitles come from the transcript.
 - **The cover says what the film is about** in their words, a line they said, readable at the size a feed shows it. It
   is the picture shown before the film plays, not a shot in it.
 
@@ -36,7 +36,7 @@ not tightening: breath and emphasis stay.
 
 Their recording, cut by trims of the same file, never re-encoded; its transcript with every word's time and the pause
 before each line (`npx openfilm get asr --src <file>`). Subtitles follow every trim on their own, so transcribe once.
-`node <this skill's folder>/scripts/cuts.mjs` measures the sound, with the ffmpeg OpenFilm uses: `pauses <recording>`
+`node <this skill's folder>/scripts/cuts.mjs` measures the sound, with the `ffmpeg` on the person's PATH: `pauses <recording>`
 lists every pause with the words around it, and the gaps in the transcript that hold sound (an um it left out);
 `check` tests every cut point in film.html; `joined --out <file>` writes the recording's clips back to back, to
 transcribe again. Keep that file out of `assets/` and delete it after. A version you treat (noise taken out through a

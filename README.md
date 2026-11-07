@@ -23,8 +23,8 @@ The script, `skills/talking-head/scripts/cuts.mjs`, is there because a transcrip
 trial on a 3.5-minute take (November 2026), word times ran 0.1-0.3 s off and the ums were
 missing from the transcript, so cuts placed from it landed in soft speech. It measures the recording's room level and
 speech level, lists the real pauses with the words around them, points at transcript gaps that hold sound, checks
-every cut point in film.html, and writes the joined sound for the second transcript. It needs only ffmpeg, which
-OpenFilm needs too.
+every cut point in film.html, and writes the joined sound for the second transcript. It needs only the `ffmpeg` on
+the person's PATH.
 
 For a recording where slides or screens fill the frame and the person speaks from a corner, use the official
 `presenter-pip`; to make short clips from a long one, `long-to-short`.
@@ -34,7 +34,7 @@ For a recording where slides or screens fill the frame and the person speaks fro
 - **In OpenFilm**: open Skills, add one from a link, and paste `https://github.com/WEBGRS/openfilm-talking-head`.
 - **In your own agent** (Claude Code, Codex and others): `npx skills add WEBGRS/openfilm-talking-head`.
 
-It needs a transcription service connected in OpenFilm (Settings → Providers).
+It needs FFmpeg on your PATH and a transcription service connected in OpenFilm (Settings → Providers).
 
 ## Check
 
@@ -55,8 +55,8 @@ node --test test/*.test.mjs   # needs ffmpeg
 - 剪掉超过 2 秒的地方连同原话列出来，想要哪段可以放回去；
 - 转写一小时录像就要用一小时的转写服务，开始前先说。
 
-脚本 `cuts.mjs` 存在的原因：转写不能当剪刀的尺子。在一段 3.5 分钟录像上试剪时，词的时间偏了 0.1–0.3 秒，「um」也没转出来，照转写下刀会切进轻声的话里。脚本按录像本身的底噪和说话音量找出真实停顿并标出前后的词，指出转写空档里藏着声音的地方，检查 film.html 的每个剪点，并导出拼接后的声音供第二次转写。只需要 ffmpeg，OpenFilm 本来就要。
+脚本 `cuts.mjs` 存在的原因：转写不能当剪刀的尺子。在一段 3.5 分钟录像上试剪时，词的时间偏了 0.1–0.3 秒，「um」也没转出来，照转写下刀会切进轻声的话里。脚本按录像本身的底噪和说话音量找出真实停顿并标出前后的词，指出转写空档里藏着声音的地方，检查 film.html 的每个剪点，并导出拼接后的声音供第二次转写。只需要系统 PATH 里的 ffmpeg。
 
 PPT、录屏占满画面、人在小窗里讲的，用官方的「小窗人物口播」（presenter-pip）；从长视频里剪短片，用「长视频转短视频」（long-to-short）。
 
-**安装**：在 OpenFilm 的技能页点「添加 skill」，粘贴链接 `https://github.com/WEBGRS/openfilm-talking-head`；用自己的智能体就运行 `npx skills add WEBGRS/openfilm-talking-head`。需要先在 OpenFilm 的设置（左上角的 OpenFilm 标志）→ 服务商里连好一个语音转写服务。
+**安装**：在 OpenFilm 的技能页点「添加 skill」，粘贴链接 `https://github.com/WEBGRS/openfilm-talking-head`；用自己的智能体就运行 `npx skills add WEBGRS/openfilm-talking-head`。需要系统 PATH 里有 FFmpeg，并先在 OpenFilm 的设置（左上角的 OpenFilm 标志）→ 服务商里连好一个语音转写服务。
