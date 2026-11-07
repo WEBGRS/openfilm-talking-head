@@ -96,4 +96,19 @@ test('check reads key words against when they are said', () => {
   assert.match(r.stdout, /Move each ✗ key word page/);
 });
 
+test('a clip that is a stray sound fails, unless the person wants it kept', () => {
+  film([[0, 1.4, 0], [2.6, 2.95, 1.4], [5.7, 11.2, 1.75]]);
+  let r = run('check');
+  assert.equal(r.status, 1);
+  assert.match(r.stdout, /plays 2\.60-2\.95 .*0\.35 s: a stray sound or half a word/);
+  r = run('check', '--keep', '2.7');
+  assert.doesNotMatch(r.stdout, /stray sound/);
+});
+
+test('slips says when the transcript puts the next word inside a clean cut', () => {
+  // The recording's um sits between two pauses; "the" is timed at the end of the um, inside the cut that is silent there
+  const r = run('slips', 'talk.wav');
+  assert.match(r.stdout, /filler "um"\s+cut 1\.\d\d-2\.\d\d .*\(the transcript times "the" at 2\.30 inside it, but the sound is silent there until 2\.\d\d\)/);
+});
+
 test.after(() => rmSync(dir, { recursive: true, force: true }));

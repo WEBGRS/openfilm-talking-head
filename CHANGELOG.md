@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1
+
+- `check` fails a clip shorter than 0.5 s unless the person wants it kept. In the 0.3.0 trial on the English recording a 0.44 s clip of a stray sound sat between two cuts and drew a click.
+- `slips` and `check` say when the transcript times the next word inside a cut that is silent there. In that trial the agent kept an um that could come out, for fear the cut took the word after it; the word starts after the pause, where the sound is.
+
 ## 0.3.0
 
 - `scripts/cuts.mjs slips <recording>` lists every um, repeat and long silence, each with the cut that takes only it, or why it has no pause on both sides to come out in. Cuts come from the recording's own pauses: in a 3.5-minute take a transcript's word times ran 0.1 to 0.5 s off, and a word after a pause starts where the one before it ended.

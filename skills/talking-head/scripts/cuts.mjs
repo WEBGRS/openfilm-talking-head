@@ -16,6 +16,7 @@ const LOUD = 0.6; // and is sound above this share
 const MARGIN = 0.02; // s of pause kept on each side of a cut point
 const AIR = 0.8; // s: a pause this long is dead air
 const AIR_KEEP = 0.25; // s of dead air that stays on each side of its cut
+const MIN_CLIP = 0.5; // s: a clip shorter than this holds no whole line
 const SLACK = 0.15; // s a transcript's word time may be off a pause
 const LATE = 0.25; // s a key word may be off the word
 const FILLER = /^(um+|uh+|uhm|erm?|ah+|hm+|mm+|mhm|嗯+|呃+|唔+)$/;
@@ -151,7 +152,11 @@ export function slipsOf(lv, ps, words) {
   const list = [];
   const unitSlip = (kind, i, j) => {
     const slip = { kind, i, j, s: units[i].s, text: said(i, j), cut: whole(i, j) };
-    if (!slip.cut) {
+    if (slip.cut) {
+      // A word after a pause is timed where the one before it ended: the transcript may put it inside a cut that is silent there
+      const early = units.filter((u, k) => k >= j && u.s > slip.cut[0] && u.s < slip.cut[1]);
+      if (early.length) slip.note = `the transcript times ${early.map((u) => `"${u.t}" at ${u.s.toFixed(2)}`).join(', ')} inside it, but the sound is silent there until ${edges[run[j - 1] + 1][1].toFixed(2)}`;
+    } else {
       const next = (j < n && run[j] === run[j - 1]) ? `"${units[j].t}"` : null, prev = i > 0 && run[i - 1] === run[i] ? `"${units[i - 1].t}"` : null;
       slip.why = prev && next ? `no pause before it (${prev}) or after it (${next})` : prev ? `no pause between ${prev} and it` : next ? `no pause between it and ${next}` : 'its sound is not where the transcript puts it';
       // The nearest cut that also takes a word or two beside it
@@ -253,7 +258,7 @@ const describe = (x, words) => {
   const what = x.kind === 'air' ? `silence of ${fmt(x.air[1] - x.air[0])} s` : x.kind === 'sound' ? 'sound with no word in the transcript' : `${x.kind} "${x.text}"`;
   const where = x.kind === 'air' ? '' : `  [${around(words, x.s)}]`;
   const span = (c) => `${fmt(c[0])}-${fmt(c[1])} (${fmt(c[1] - c[0])} s)`;
-  const how = x.cut ? `cut ${span(x.cut)}` : `stays: ${x.why}${x.widen ? `; cut ${span(x.widen.cut)} takes "${x.widen.also}" with it` : ''}`;
+  const how = x.cut ? `cut ${span(x.cut)}${x.note ? ` (${x.note})` : ''}` : `stays: ${x.why}${x.widen ? `; cut ${span(x.widen.cut)} takes "${x.widen.also}" with it` : ''}`;
   return `${fmt(x.s)}  ${what}  ${how}${where}`;
 };
 
@@ -300,6 +305,13 @@ async function check(film) {
     if (!main || length > main.length) main = { file, own, words, ps, length, lv };
     // Lines in the order they were said
     own.forEach((c, k) => { if (k && c.in < own[k - 1].out - 0.01) fail(`${c.id} plays ${fmt(c.in)}-${fmt(c.out)} in ${file}, before where ${own[k - 1].id} ended (${fmt(own[k - 1].out)}): their words are out of order or said twice`, 'Put the clips in the order the person said them; a line said twice appears once.'); });
+    // A clip this short is a stray sound or half a word
+    own.forEach((c, k) => {
+      const len = (c.out - c.in) / c.speed;
+      if (len < MIN_CLIP && k > 0 && k < own.length - 1 && !keep.some((t) => t >= c.in && t <= c.out)) {
+        fail(`${c.id} plays ${fmt(c.in)}-${fmt(c.out)} in ${file}, ${fmt(len)} s: a stray sound or half a word${words ? ` (${around(words, c.in)})` : ''}`, 'Drop each stray clip, or join it to the clip beside it, with every cut in a pause. Keep one only if it is a whole word, and tell them: --keep <seconds>.');
+      }
+    });
     // Every cut point in a pause
     let points = 0, off = 0;
     for (const c of clips) {
