@@ -27,10 +27,10 @@
     "es": "Tu grabación hablando sin muletillas, tropiezos ni silencios, con cortes que no se notan, palabras clave, rótulo con tu nombre y portada."
   },
   "details": {
-    "en": "Best for: vlogs, lessons, courses and long rough takes of someone talking to camera.\nWhat it does: cuts only in pauses so no cut is heard, keeps your words in your order, puts your key words on screen as you say them, adds a name card and a cover, and lists every longer cut with its words so you can put any back.",
-    "zh-CN": "适合：口播、vlog、课程、一镜到底的长录像。\n它会：只在停顿处下刀，听不出剪辑点；你的话保持原样和原顺序；念到重点词时把它放上画面，加人物名片和封面；剪掉的较长片段连同原话列给你，想要哪段可以放回去。",
-    "ja": "こんなときに：Vlog、授業、講座、カメラに向かって話す長い撮りっぱなしの映像。\nすること：間でだけカットしてつなぎ目を聞こえなくし、言葉も順番もそのまま。話した瞬間にキーワードを画面に出し、名前テロップとサムネイルを付け、長めのカットは元の言葉と一緒に一覧で渡すので、戻したいところは戻せます。",
-    "ko": "이럴 때: 브이로그, 강의, 강좌, 카메라를 보고 말하는 긴 원본 영상.\n하는 일: 쉬는 지점에서만 잘라 편집점이 들리지 않게 하고, 말과 순서는 그대로 둡니다. 말하는 순간 핵심 단어를 화면에 띄우고 이름 자막과 표지를 더하며, 길게 잘라낸 부분은 원래 말과 함께 목록으로 주어 원하면 되돌릴 수 있습니다.",
-    "es": "Ideal para: vlogs, clases, cursos y tomas largas de alguien hablando a cámara.\nQué hace: corta solo en las pausas para que no se oiga ningún corte, mantiene tus palabras en tu orden, muestra tus palabras clave cuando las dices, añade un rótulo con tu nombre y una portada, y te da la lista de los cortes largos con sus palabras por si quieres recuperar alguno."
+    "en": "Best for: vlogs, lessons, courses and long rough takes of someone talking to camera.\nWhat it does: cuts only in pauses so no cut is heard, takes out every um, repeat and long silence that has a pause on both sides, keeps your words in your order, puts your key words on screen as you say them, adds a name card and a cover, and lists every longer cut with its words so you can put any back.",
+    "zh-CN": "适合：口播、vlog、课程、一镜到底的长录像。\n它会：只在停顿处下刀，听不出剪辑点；前后都有停顿的口癖、重复和长空档一个不留；你的话保持原样和原顺序；念到重点词时把它放上画面，加人物名片和封面；剪掉的较长片段连同原话列给你，想要哪段可以放回去。",
+    "ja": "こんなときに：Vlog、授業、講座、カメラに向かって話す長い撮りっぱなしの映像。\nすること：間でだけカットしてつなぎ目を聞こえなくし、前後に間のある「えー」や言い直し、長い無音はすべて取り除きます。言葉も順番もそのまま。話した瞬間にキーワードを画面に出し、名前テロップとサムネイルを付け、長めのカットは元の言葉と一緒に一覧で渡すので、戻したいところは戻せます。",
+    "ko": "이럴 때: 브이로그, 강의, 강좌, 카메라를 보고 말하는 긴 원본 영상.\n하는 일: 쉬는 지점에서만 잘라 편집점이 들리지 않게 하고, 앞뒤에 쉼이 있는 군말과 되풀이, 긴 빈 시간은 빠짐없이 걷어냅니다. 말과 순서는 그대로 둡니다. 말하는 순간 핵심 단어를 화면에 띄우고 이름 자막과 표지를 더하며, 길게 잘라낸 부분은 원래 말과 함께 목록으로 주어 원하면 되돌릴 수 있습니다.",
+    "es": "Ideal para: vlogs, clases, cursos y tomas largas de alguien hablando a cámara.\nQué hace: corta solo en las pausas para que no se oiga ningún corte, quita todas las muletillas, repeticiones y silencios largos que tienen una pausa a cada lado, mantiene tus palabras en tu orden, muestra tus palabras clave cuando las dices, añade un rótulo con tu nombre y una portada, y te da la lista de los cortes largos con sus palabras por si quieres recuperar alguno."
   }
 }

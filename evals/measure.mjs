@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Measures a finished talking-head film against its recording, whichever way it was made. Needs ffmpeg on the PATH.
-//   node measure.mjs <film.html> <recording name> [--words <recording.vtt>] [--mp4 <render>] [--ref <a.vtt> --heard <b.vtt>]
-// --words: the recording's word-timed transcript. --mp4: the render, for the picture at each join.
+//   node measure.mjs <film.html> <recording name> [--words <recording.vtt>] [--spans <a-b;a-b>] [--mp4 <render>] [--ref <a.vtt> --heard <b.vtt>]
+// --words: the recording's word-timed transcript. --spans: stretches of the recording to look for, in its seconds (stumbles read from the transcript).
+// --mp4: the render, for the picture at each join.
 // --ref / --heard: the recording and the render transcribed by one same model, to diff what is heard.
 import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
@@ -104,19 +105,26 @@ const report = { film: filmPath, recording: recName, source_s: +duration.toFixed
   cut_points: points.length, in_quiet: clean.length, in_loud_speech: loud.length, room_db: +room.toFixed(1), speech_db: +speech.toFixed(1), air_left_s: +air.toFixed(1), longest_air_s: longest,
   film_clips: clips.length, other_media: [...new Set(clips.filter((c) => c.tag !== 'iframe' && basename(c.file) !== recName).map((c) => c.file))] };
 
-// Fillers in the transcript, gone or kept, and words inside each long gap
+// Share of [a, b] of the recording that the film keeps
+const share = (a, b) => (b > a ? talk.reduce((n, c) => n + Math.max(0, Math.min(b, c.out) - Math.max(a, c.in)), 0) / (b - a) : 0);
+const sayKept = (f) => (f >= 0.7 ? 'kept' : f <= 0.3 ? 'gone' : 'partly');
+
+// Fillers in the transcript, gone or kept, and words inside each long gap. A transcript's times run a few tenths off, so each
+// filler is judged over its own stretch and the three answers are counted apart
 const wordsFile = argOf('words');
 if (wordsFile) {
   const words = vttWords(wordsFile);
   const FILL = /^(um+|uh+|erm|er|ah|mm+|hmm+|嗯+|呃+|啊+|唔+|额+)[,.!?，。！？-]*$/i;
-  const isKept = (w) => kept((w.s + w.e) / 2);
-  report.fillers_in_source = words.filter((w) => FILL.test(w.w)).length;
-  report.fillers_kept = words.filter((w) => FILL.test(w.w) && isKept(w)).length;
+  const fill = words.filter((w) => FILL.test(w.w));
+  const verdict = fill.map((w) => sayKept(share(w.s, Math.max(Math.min(w.e, w.s + 0.6), w.s + 0.3))));
+  report.fillers_in_source = fill.length;
+  report.fillers = { gone: verdict.filter((v) => v === 'gone').length, partly: verdict.filter((v) => v === 'partly').length, kept: verdict.filter((v) => v === 'kept').length };
   report.words_in_source = words.length;
-  report.words_cut = words.filter((w) => !isKept(w)).length;
+  report.words_cut = words.filter((w) => !kept((w.s + w.e) / 2)).length;
   report.points_inside_word = points.filter((p) => words.some((w) => p.t > w.s + 0.03 && p.t < w.e - 0.03)).length;
   report.removed = gaps.filter(([a, b]) => b - a > 0.3).map(([a, b]) => `${a.toFixed(2)}-${b.toFixed(2)} ${words.filter((w) => (w.s + w.e) / 2 >= a && (w.s + w.e) / 2 < b).map((w) => w.w).join(' ')}`);
 }
+if (argOf('spans')) report.spans = argOf('spans').split(';').map((x) => { const [a, b] = x.split('-').map(Number); return { span: x, kept: +share(a, b).toFixed(2), is: sayKept(share(a, b)) }; });
 
 // Order-preserving diff of the recording and the film, both transcribed by one same model
 if (argOf('ref') && argOf('heard')) {
