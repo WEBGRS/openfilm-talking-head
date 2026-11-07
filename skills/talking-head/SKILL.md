@@ -10,45 +10,46 @@ with nothing a viewer would skip and nothing missing that mattered.
 
 ## What defines it
 
-No one can tell where it was cut. A cut that clips a syllable, jumps the picture or swallows a breath is heard at
-once, and a sentence spliced from words they never said in that order is no longer theirs. Taking out every pause is
-not tightening: breath and emphasis stay.
+No one can tell where it was cut, and what a viewer would skip is gone. A cut that clips a syllable or swallows a breath is
+heard at once, and a sentence spliced from words they never said in that order is no longer theirs. Taking out every pause is not tightening: breath and emphasis stay.
 
 ## What has to be true
 
 - **Their words, in their order.** Only ums, false starts, repeats, abandoned takes and dead air go, unless they ask
-  for more; of a line said twice, the last whole one stays. Report the length before and after, and every cut longer
-  than two seconds with the words it took out.
-- **Every cut falls in a pause of 0.12 s or more in the sound**, never inside a word, and sounds continuous when heard
-  across it. A transcript's times run a few tenths off and its gaps can hide an um, so cut points come from the pauses
-  measured in the recording, and every one passes the check below. A filler with no pause on either side stays. Where
-  the picture would jump, it is covered: by a change of framing, by something they talk about, or by their key word
-  filling the screen. Check the frames on both sides of every cut.
+  for more; of a line said twice, the last whole one stays. A silence over 0.8 s is cut to about half a second.
+- **Every cut falls in a pause of 0.12 s or more in the sound**, never inside a word. A transcript's times run a few
+  tenths off and it leaves ums out, so cut points come from the pauses measured in the recording. Where the picture
+  would jump, something covers it; look at the frames on both sides of every cut.
+- **What can come out does.** They asked for the ums, restarts and dead air out. One that stands between two pauses is
+  cut there, and `check` fails while it is in. One that runs straight into a word has no pause to cut in: it stays, and
+  you tell the person how many and which.
 - **Heard again, it is their words.** The joined sound, transcribed once more, reads as what they said in their order,
-  less only what was meant to go. A cut that left the repeat in or took a word with it is moved or put back.
-- **What is on screen is what they said.** A key word lands within two frames of being said and leaves when they move
-  on; the name card carries the name and title they gave, spelled their way, and it goes in with what is sure (a name
-  only a transcript heard is a guess: that part stays off until they spell it); subtitles come from the transcript.
-- **The cover says what the film is about** in their words, a line they said, readable at the size a feed shows it. It
-  is the picture shown before the film plays, not a shot in it.
+  less only what was meant to go; a cut that left a repeat in or took a word is moved.
+- **What is on screen is what they said.** A key word lands as they say it, within 0.25 s, and leaves when they move
+  on. The name card carries the name and title they gave, spelled their way, and goes in with what is sure (a name only
+  a transcript heard is a guess: that part stays off until they spell it). Subtitles come from the transcript.
+- **The cover** is a line they said that says what the film is about, readable at the size a feed shows it, shown
+  before the film plays, not a shot in it.
 
 ## What you have
 
-Their recording, cut by trims of the same file, never re-encoded; its transcript with every word's time and the pause
-before each line (`npx openfilm get asr --src <file>`). Subtitles follow every trim on their own, so transcribe once.
-`node <this skill's folder>/scripts/cuts.mjs` measures the sound, with the `ffmpeg` on the person's PATH: `pauses <recording>`
-lists every pause with the words around it, and the gaps in the transcript that hold sound (an um it left out);
-`check` tests every cut point in film.html; `joined --out <file>` writes the recording's clips back to back, to
-transcribe again. Keep that file out of `assets/` and delete it after. A version you treat (noise taken out through a
-service the person has, the level evened) is a new file under `assets/`, and the cuts stay trims of it. Anything you
-can make titles, cards and motion with, your own built-in tools, and the services the person has keys for. Each key
-word, the card and the cover is a page of its own (a page's address takes no query); `npx openfilm look <page> 0`
-gives the cover's picture. Transcribing an hour costs an hour of their service, and hearing the cut again costs its
-length once more: say so before you start.
+Their recording and its transcript with every word's time
+(`npx openfilm get asr --src <file>` writes `<name>.vtt` beside it). Keep the two together, in `assets/` too:
+subtitles follow every trim from that file. `node <this skill's folder>/scripts/cuts.mjs`
+measures the sound, with the `ffmpeg` on the person's PATH:
+- `pauses <recording>`: every pause, with the words around it;
+- `slips <recording>`: every um, repeat, restart and long silence, with the cut that takes only it, or why it stays;
+- `joined --out <file>`: the clips back to back, to transcribe again; keep that file out of `assets/` and delete it after;
+- `check`: run it last. Cut points, what is still in, order, the transcript, key words against the words, the numbers for
+  your report. It exits 1 and ends with what to do.
+
+Each key word, the card and the cover is a page of its own (a page's address takes no query); `npx openfilm look <page> 0`
+gives the cover's picture. Transcribing costs the length of the recording in their service, and hearing the cut again
+costs its length once more: say so before you start.
 
 ## With the person
 
 What they ask for comes first. How long it should end up, where it will be watched, their name and title for the
-card, and whether tangents may go as well. Ask without holding up the work. When done, tell them in a few lines the
-length before and after, how many cuts, the longer ones with their words so they can put any back, and what of theirs
-would make it better.
+card, and whether tangents may go as well: ask without holding up the work. When done, tell them in a few lines the
+length before and after, the cuts over two seconds with their words so they can put any back, what stayed and why,
+any word taken that was not an um or a repeat, and what of theirs would make it better.
