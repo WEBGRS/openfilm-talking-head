@@ -2,7 +2,7 @@
 
 How this skill was tried. Nothing here goes to the agent: only `skills/` is installed.
 
-The skill was not clearly better. On the English request 0.3.0 left 9 of the 14 ums in the recording and the arm without it left 3. On the Chinese request 0.3.0 cut 2 s of silence and kept all three stumbles, and the arm without it took one out, most of another, and left one. In return no cut point of any film made with the skill fell in loud speech and no word was damaged, against 22 of 72 cut points and 6 damaged places in the English film without it, and 4 of 60 and 1 in the Chinese. The films with the skill also carry no wording of their own and no guessed name.
+The skill was not clearly better. On the English request 0.3.0 left 9 of the 14 ums in the recording and the arm without it left 3. On the Chinese request 0.3.0 cut 2 s of silence and kept all three stumbles, and the arm without it took one out, most of another, and left one. In return no cut point of any film made with the skill fell in loud speech and no word was damaged, against 22 of 72 cut points and 6 damaged places in the English film without it, and 4 of 60 and 1 in the Chinese. The films with the skill also carry no wording of their own and no guessed name. Their English mixes are quieter (-24.5 and -24.7 LUFS against -17.5).
 
 The gap comes from cutting where there is no pause. Of the 29 ums, repeats and restarts that `slips` lists in the English recording, 26 have no pause of 0.12 s on one side or both. The skill leaves those in and says so; the arm without it cut through 16 of them. The 3 that can come out whole are the only ones the skill can promise to remove.
 
@@ -14,7 +14,7 @@ No transcription service was connected. None of the three `with` arms could tran
 
 Neither recording is in this repository.
 
-- English: [WIKITONGUES- William speaking English](https://commons.wikimedia.org/wiki/File:WIKITONGUES-_William_speaking_English.webm), Wikimedia Commons, Bogreudell, CC BY-SA 4.0. 210.4 s, one take. The speaker gives his name near the end; the transcripts spell the surname "Diarra" and, in a second run, "Diara".
+- English: [WIKITONGUES- William speaking English](https://commons.wikimedia.org/wiki/File:WIKITONGUES-_William_speaking_English.webm), Wikimedia Commons, Bogreudell, CC BY-SA 4.0. 210.4 s, one take. The speaker gives a name near the end; the transcripts spell the surname "Diarra" and, in a second run, "Diara".
 - Chinese: [WIKITONGUES- Tao speaking Yunnan Mandarin with Thai and Taiwanese accent](https://commons.wikimedia.org/wiki/File:WIKITONGUES-_Tao_speaking_Yunnan_Mandarin_with_Thai_and_Taiwanese_accent.webm), Wikimedia Commons, Wikitongues and Teddy Nee, CC BY-SA 4.0. 127.2 s, one take. The transcript hears the name as 朱岛.
 
 A word-timed transcript was supplied beside each recording, the same in both arms: faster-whisper `medium` for William (14 ums in it), `large-v3` for Tao. The `with` arms and the English `without` arm moved the recording into `assets/` with its transcript. The Chinese `without` arm left `tao.vtt` at the project's root, so `check` was run on a copy of its film with the transcript beside the recording.
@@ -63,15 +63,15 @@ This is a one-take recording of me talking to camera about South Africa's data p
 | clicks at joins | 1/12 | 0/6 | 1/35 |
 | mix, peak | -24.5 LUFS, -3.5 dB | -24.7 LUFS, -3.5 dB | -17.5 LUFS, -0.6 dB |
 | key words | 8 pages, all within 0.04 s of the transcript | 8 pages, all within 0.04 s | 14 plates; 2 are 0.77 and 1.75 s off the transcript's time for their words, 1 is 0.32 s late against the sound |
-| name card | William and his title | his title, no name | William Diarra and his title |
-| cover | apart from the film, his line | apart from the film, his line | a 2.6 s card at the start of the film, and a thumbnail file |
+| name card | William and a title | a title, no name | William Diarra and a title |
+| cover | apart from the film, the speaker's line | apart from the film, the speaker's line | a 2.6 s card at the start of the film, and a thumbnail file |
 | minutes, cost | 11.6, $1.56 | 16.8, $0.90 | 29.4, $1.32 |
 
-Seen, with 0.3.0: the key word is a yellow plate at the right, over the wall, and the card at the lower left reads "William / Final-year law student / University of Cape Town"; neither covers his face. Its film.html alternates the box between the full frame and a closer one at every join, and all 12 joins measure as changed. The one click is the join at 81.17 s, where a 0.44 s clip holds a stray sound between two cuts. The agent kept two slips that `check` listed, with `--keep`: "information about children," (an item in his list of special categories) and the um at 47.46 s, which it said the cut would take "it" with. In the sound that um sits between two pauses and "it" starts after the second one; the transcript times "it" 0.34 s early. It said the mix is quiet and the peaks leave no room to raise it.
+Seen, with 0.3.0: the key word is a yellow plate at the right, over the wall, and the card at the lower left reads "William / Final-year law student / University of Cape Town"; neither covers the speaker's face. Its film.html alternates the box between the full frame and a closer one at every join, and all 12 joins measure as changed. The one click is the join at 81.17 s, where a 0.44 s clip holds a stray sound between two cuts. The agent kept two slips that `check` listed, with `--keep`: "information about children," (an item in the speaker's list of special categories) and the um at 47.46 s, which it said the cut would take "it" with. In the sound that um sits between two pauses and "it" starts after the second one; the transcript times "it" 0.34 s early. It said the mix is quiet and the peaks leave no room to raise it.
 
-Seen, with 0.3.1: the agent took that um out, and said 22 slips remain for want of a pause. The film is 12 s longer than 0.3.0's from fewer cuts: seven clips, six joins. Three of the six joins use a closer frame; correlation reads 0.84 to 0.99 there. The card has his title and no name at all, although "William" is in both transcripts. The cover is a still of his face with the title and one line he said.
+Seen, with 0.3.1: the agent took that um out, and said 22 slips remain for want of a pause. The film is 12 s longer than 0.3.0's from fewer cuts: seven clips, six joins. Three of the six joins use a closer frame; correlation reads 0.84 to 0.99 there. The card has the title and no name at all, although "William" is in both transcripts. The cover is a still of the speaker's face with the title and one line from the recording.
 
-Seen, without: a 2.6 s title card opens the film, with "POPIA", a word he never says, and plates carry small kicker lines of the agent's own. The name card says William Diarra, the surname from the transcript only; the agent asked for confirmation. 22 cut points fall in loud speech and the second transcript differs from the recording at six of them: "it" is missing from "justify it", "so they have to" reads "that to", "require it" reads "required", "not in operation" and "is in operation" read "an", and "the act" reads "that act". Its own mp4, not the film, was brought to -14 LUFS.
+Seen, without: a 2.6 s title card opens the film, with "POPIA", a word never said in the recording, and plates carry small kicker lines of the agent's own. The name card says William Diarra, the surname from the transcript only; the agent asked for confirmation. 22 cut points fall in loud speech and the second transcript differs from the recording at six of them: "it" is missing from "justify it", "so they have to" reads "that to", "require it" reads "required", "not in operation" and "is in operation" read "an", and "the act" reads "that act". Its own mp4, not the film, was brought to -14 LUFS.
 
 ## Request 2, Chinese
 
@@ -94,10 +94,10 @@ tao.webm 是我对着镜头讲的一段自我介绍，讲我自己和我们的�
 | mix, peak | -20.8 LUFS, -2.0 dB | -20.7 LUFS, -2.0 dB |
 | key words | 8 pages, 7 at 0.00 s from the transcript, 1 at 0.10 s early | 9 pages; 6 match no words said near them, the card among them; of the other 3, one is 0.70 s and one 1.22 s off |
 | name card | the bookshop and the town, no person's name | 朱涛 |
-| cover | apart from the film, his line | apart from the film, its own lines and 朱涛 |
+| cover | apart from the film, the speaker's line | apart from the film, its own lines and 朱涛 |
 | minutes, cost | 19.9, $0.86 | 41.3, $1.07 |
 
-Seen, with: two clips and one join; the key word plates ("台湾", "越南人") read clearly on the wall at the left, and the card reads "东南亚书店 / 桃园". The cover is 东南亚书店 over his line 我介绍一下这个书店. The agent named the three stumbles it could see in the transcript and left them, because each runs into a neighbouring word; it took no word that was not silence. It left the person's name off because the transcript's 朱岛 is a guess.
+Seen, with: two clips and one join; the key word plates ("台湾", "越南人") read clearly on the wall at the left, and the card reads "东南亚书店 / 桃园". The cover is 东南亚书店 over the speaker's line 我介绍一下这个书店. The agent named the three stumbles it could see in the transcript and left them, because each runs into a neighbouring word; it took no word that was not silence. It left the person's name off because the transcript's 朱岛 is a guess.
 
 Seen, without: the film has 4 cut points in loud speech and 10 not in a pause. It took out 我们家就 and most of 看这个他们, left 它是以这个, and the second transcript lost 那些 after 青麦. It said every join alternates a 12% zoom; the frames across a join (3.22 s) show the head moving in a fixed frame, and all 29 joins measure unchanged. The name is 朱涛, which the agent took from the file name tao against the transcript's 朱岛 and said it was unsure of. Plates carry small lines of its own such as 出生地. It said it brought its mp4 to about -17 LUFS; the film itself measures -20.7.
 

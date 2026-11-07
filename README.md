@@ -1,12 +1,13 @@
 # talking-head
 
-An [OpenFilm](https://github.com/openfilm/openfilm) skill for the plainest and most asked-for edit: a recording of
-someone talking to camera, cleaned up. The ums, false starts, repeats, abandoned takes and dead air go, every cut
-falls in a pause so nobody hears it, and the key words, a name card and a cover go on top.
+An [OpenFilm](https://github.com/openfilm/openfilm) skill for a plain edit: a recording of someone talking to camera,
+cleaned up. Every cut falls in a measured pause, so no word is cut through. Ums, false starts, repeats and dead air with
+a pause to come out in go; one that runs into the next word stays, and the agent says so. In the trials that left most
+ums in and damaged no word ([evals](evals/README.md)). The key words, a name card and a cover go on top.
 
 | | | |
 | --- | --- | --- |
-| <img src="skills/talking-head/cover.jpg" width="200" alt=""> | [Talking head](skills/talking-head) | Your talking recording without the ums, stumbles and dead air, cut so nobody notices, with key words, a name card and a cover. |
+| <img src="skills/talking-head/cover.jpg" width="200" alt=""> | [Talking head](skills/talking-head) | Your talking recording cut only in its pauses, with the ums and dead air that can come out cleanly gone, plus key words, a name card and a cover. |
 
 It is a brief and one script. Most of the work already exists in OpenFilm: `npx openfilm get asr` gives every
 word's time, a recording is cut by trimming the same file, and Studio draws the subtitles of every trim from one
@@ -48,7 +49,7 @@ node --test test/*.test.mjs   # needs ffmpeg
 
 ## 中文说明
 
-口播剪辑用的 OpenFilm 技能：把一段对着镜头说话的录像剪干净。去掉口癖、说错重来、重复、没说完的那一遍和空档；每一刀都落在停顿里，听不出剪辑点；再加上重点词、人物名片和封面。
+口播剪辑用的 OpenFilm 技能：把一段对着镜头说话的录像剪干净。每一刀都落在实测的停顿里，不切断词。有停顿可下刀的口癖、说错重来、重复和空档会去掉；紧贴下一个词的留着，并告诉你。试验里大部分 um 因此留下，也没有损坏一个词（见 [evals](evals/README.md)）。再加上重点词、人物名片和封面。
 
 它是一份需求书加一个脚本。大部分能力 OpenFilm 都有：`npx openfilm get asr` 给出每个字的时间，剪辑就是对同一个文件做裁剪，Studio 按一份转写给每段裁剪出字幕。需求书补的是没人说时智能体容易做错的地方：
 

@@ -20,17 +20,17 @@
     "es": "Vídeo hablando a cámara"
   },
   "summary": {
-    "en": "Your talking recording without the ums, stumbles and dead air, cut so nobody notices, with key words, a name card and a cover.",
-    "zh-CN": "你的口播录像：去掉口癖、卡壳和空档，剪得看不出来，再加上重点词、人物名片和封面。",
-    "ja": "話している映像から、つなぎ言葉や言い直し、無音を気づかれないように取り除き、キーワード、名前テロップ、サムネイルを添えます。",
-    "ko": "말하는 영상에서 군말, 말실수, 빈 시간을 티 나지 않게 잘라내고, 핵심 단어와 이름 자막, 표지를 더합니다.",
-    "es": "Tu grabación hablando sin muletillas, tropiezos ni silencios, con cortes que no se notan, palabras clave, rótulo con tu nombre y portada."
+    "en": "Your talking recording cut only in its pauses, with the ums and dead air that can come out cleanly gone, plus key words, a name card and a cover.",
+    "zh-CN": "你的口播录像：只在停顿处下刀，去掉能干净取出的口癖和空档，再加上重点词、人物名片和封面。",
+    "ja": "話している映像を間の部分だけでカットし、きれいに取れるつなぎ言葉と無音を除いて、キーワード、名前テロップ、サムネイルを添えます。",
+    "ko": "말하는 영상을 쉬는 지점에서만 잘라 깨끗이 뺄 수 있는 군말과 빈 시간을 걷어내고, 핵심 단어와 이름 자막, 표지를 더합니다.",
+    "es": "Tu grabación hablando, cortada solo en sus pausas, sin las muletillas y silencios que salen limpios, con palabras clave, rótulo con tu nombre y portada."
   },
   "details": {
-    "en": "Best for: vlogs, lessons, courses and long rough takes of someone talking to camera.\nWhat it does: cuts only in pauses so no cut is heard, takes out every um, repeat and long silence that has a pause on both sides, keeps your words in your order, puts your key words on screen as you say them, adds a name card and a cover, and lists every longer cut with its words so you can put any back.",
-    "zh-CN": "适合：口播、vlog、课程、一镜到底的长录像。\n它会：只在停顿处下刀，听不出剪辑点；前后都有停顿的口癖、重复和长空档一个不留；你的话保持原样和原顺序；念到重点词时把它放上画面，加人物名片和封面；剪掉的较长片段连同原话列给你，想要哪段可以放回去。",
-    "ja": "こんなときに：Vlog、授業、講座、カメラに向かって話す長い撮りっぱなしの映像。\nすること：間でだけカットしてつなぎ目を聞こえなくし、前後に間のある「えー」や言い直し、長い無音はすべて取り除きます。言葉も順番もそのまま。話した瞬間にキーワードを画面に出し、名前テロップとサムネイルを付け、長めのカットは元の言葉と一緒に一覧で渡すので、戻したいところは戻せます。",
-    "ko": "이럴 때: 브이로그, 강의, 강좌, 카메라를 보고 말하는 긴 원본 영상.\n하는 일: 쉬는 지점에서만 잘라 편집점이 들리지 않게 하고, 앞뒤에 쉼이 있는 군말과 되풀이, 긴 빈 시간은 빠짐없이 걷어냅니다. 말과 순서는 그대로 둡니다. 말하는 순간 핵심 단어를 화면에 띄우고 이름 자막과 표지를 더하며, 길게 잘라낸 부분은 원래 말과 함께 목록으로 주어 원하면 되돌릴 수 있습니다.",
-    "es": "Ideal para: vlogs, clases, cursos y tomas largas de alguien hablando a cámara.\nQué hace: corta solo en las pausas para que no se oiga ningún corte, quita todas las muletillas, repeticiones y silencios largos que tienen una pausa a cada lado, mantiene tus palabras en tu orden, muestra tus palabras clave cuando las dices, añade un rótulo con tu nombre y una portada, y te da la lista de los cortes largos con sus palabras por si quieres recuperar alguno."
+    "en": "Best for: vlogs, lessons, courses and long rough takes of someone talking to camera.\nWhat it does: cuts only in pauses measured in the sound, so no word is cut through; takes out every um, repeat and long silence that has a pause on both sides, and tells you which ones run into a word and stay; keeps your words in your order, puts your key words on screen as you say them, adds a name card and a cover, and lists every longer cut with its words so you can put any back.",
+    "zh-CN": "适合：口播、vlog、课程、一镜到底的长录像。\n它会：只在实测的停顿处下刀，不切断词；前后都有停顿的口癖、重复和长空档都去掉，紧贴词的留着并告诉你；你的话保持原样和原顺序；念到重点词时把它放上画面，加人物名片和封面；剪掉的较长片段连同原话列给你，想要哪段可以放回去。",
+    "ja": "こんなときに：Vlog、授業、講座、カメラに向かって話す長い撮りっぱなしの映像。\nすること：音から測った間でだけカットして言葉を切らず、前後に間のある「えー」や言い直し、長い無音を取り除きます。言葉につながっているものは残し、そう伝えます。言葉も順番もそのまま。話した瞬間にキーワードを画面に出し、名前テロップとサムネイルを付け、長めのカットは元の言葉と一緒に一覧で渡すので、戻したいところは戻せます。",
+    "ko": "이럴 때: 브이로그, 강의, 강좌, 카메라를 보고 말하는 긴 원본 영상.\n하는 일: 소리로 잰 쉬는 지점에서만 잘라 말을 끊지 않고, 앞뒤에 쉼이 있는 군말과 되풀이, 긴 빈 시간을 걷어냅니다. 말에 붙어 있는 것은 남기고 알려 줍니다. 말과 순서는 그대로 둡니다. 말하는 순간 핵심 단어를 화면에 띄우고 이름 자막과 표지를 더하며, 길게 잘라낸 부분은 원래 말과 함께 목록으로 주어 원하면 되돌릴 수 있습니다.",
+    "es": "Ideal para: vlogs, clases, cursos y tomas largas de alguien hablando a cámara.\nQué hace: corta solo en pausas medidas en el sonido, sin partir ninguna palabra; quita las muletillas, repeticiones y silencios largos que tienen una pausa a cada lado, y te dice cuáles quedan por ir pegados a una palabra; mantiene tus palabras en tu orden, muestra tus palabras clave cuando las dices, añade un rótulo con tu nombre y una portada, y te da la lista de los cortes largos con sus palabras por si quieres recuperar alguno."
   }
 }
