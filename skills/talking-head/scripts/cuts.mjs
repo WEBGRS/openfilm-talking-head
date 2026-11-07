@@ -334,7 +334,7 @@ async function check(film) {
     const us = words ? unitsOf(words) : [];
     const slipWords = words ? new Set(slipsOf(main.lv, main.ps, words).flatMap((x) => us.slice(x.i, x.j).map((u) => u.w))) : new Set();
     for (const [a, b] of gaps) {
-      const inside = words ? words.map((x, k) => ({ ...x, k })).filter((x) => (x.s + x.e) / 2 >= a && (x.s + x.e) / 2 < b) : [];
+      const inside = words ? words.map((x, k) => ({ ...x, k })).filter((x) => { const e = Math.max(x.e, x.s + 0.05); return Math.min(e, b) - Math.max(x.s, a) >= 0.5 * (e - x.s); }) : [];
       if (b - a >= 2) console.log(`  took out ${fmt(a)}-${fmt(b)} (${fmt(b - a)} s)${words ? `: ${inside.map((x) => x.w).join(' ')}` : ''}`);
       const other = inside.filter((x) => !slipWords.has(x.k) && norm(x.w));
       if (other.length) console.log(`  ${b - a >= 2 ? '  ' : `took out ${fmt(a)}-${fmt(b)}: `}words that are not slips, say so: ${other.map((x) => `${x.w} (${fmt(x.s)})`).join(' ')}`);
